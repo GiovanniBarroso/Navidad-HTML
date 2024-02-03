@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARBOL DE NAVIDAD</title>
+    <link rel="icon" href="../fotos/foto.pestaña.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style7.css">
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            cursor: url(https://cur.cursors-4u.net/anime/ani-12/ani1160.gif), auto;
+            background: black;
+            display: grid;
+            justify-content: center;
+            text-align: center;
+        }
+
+        p {
+            color: teal;
+        }
+
+        .estrella {
+            font-size: 100px;
+            animation: colores 1s infinite;
+        }
+
+        .rojo {
+            color: red;
+            transition: all 1.5s;
+            font-size: 30px;
+        }
+
+        @keyframes colores {
+
+            /* Animación de cambio de color */
+            0% {
+                color: red;
+            }
+
+            33% {
+                color: green;
+            }
+
+            66% {
+                color: red;
+            }
+
+            100% {
+                color: yellow;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Elementos visuales -->
+    <div class="estrella">*</div> <!-- Estrella -->
+    <div id="arbol"></div> <!-- Árbol de Navidad -->
+    <h1 class="h1arbol">¡¡FELIZ NAVIDAD <br> Y PRÓSPERO AÑO NUEVO 2024!!</h1>
+
+    <!-- Script para generar el árbol -->
+    <script>
+        // Creación del árbol de Navidad
+        var hojas = "";
+        [10, 2].forEach(row => {
+            new Array(row).fill('').forEach((v, i) => {
+                hojas += ([
+                    ...Array(9 - i).fill("<span> </span>"),
+                    ...Array(1 + i * 2).fill("<span class='rojo'>*</span>"),
+                    ...Array(9 - i).fill("<span> </span>"),
+                ].join(''))
+                hojas += "<br>"
+            })
+        })
+        document.getElementById("arbol").innerHTML = hojas;
+
+        // Animación de cambio de color para las hojas
+        let animacion = document.querySelectorAll(".rojo");
+        animacion.innerHTML = hojas;
+
+        function animar() {
+            for (var i = 0; i < animacion.length; i++) {
+                let tiempo = i / 20 + 1;
+                animacion[i].style.animation = "colores " + tiempo + "s infinite";
+            }
+        }
+        window.addEventListener('load', animar);
+    </script>
+
+    <!-- Botón para volver atrás -->
+    <div class="regalo">
+        <a href="index7.1.html"><img src="../fotos/foto.regaloback.png" alt="Boton volver atrás"></a>
+    </div>
+</body>
+
+</html>
